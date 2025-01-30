@@ -2,7 +2,6 @@ import os
 
 import streamlit as st
 from yt_dlp import YoutubeDL
-import ffmpeg
 
 def checkfile(file_name):
     try:
@@ -22,7 +21,7 @@ def dl_mov(url):
             file_num += 1
         else:
             break
-    ydl_opts = {'format': 'bestvideo+bestaudio/best', 'outtmpl': str(file_num) + ".mp4", "ignoreerrors": True}
+    ydl_opts = {'format': 'best', 'outtmpl': str(file_num) + ".mp4", "ignoreerrors": True}
     with YoutubeDL(ydl_opts) as ydl:
         result=ydl.download([url])
     if result != 0:
